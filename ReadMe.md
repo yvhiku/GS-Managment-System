@@ -96,12 +96,6 @@ A web-based management system built with PHP, JavaScript, and MySQL for managing
 4. **User Management**: Manage user accounts (admin only)
 5. **Settings**: Configure system preferences
 
-## Screenshots
-
-(Add actual screenshots from the system here)
-- Login page
-- Dashboard view
-- Server management interface
 
 ## API Endpoints
 
