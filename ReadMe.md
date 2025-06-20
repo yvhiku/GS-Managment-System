@@ -1,172 +1,131 @@
-Grocery Store Management System (GSMS) - README
-Overview
-The Grocery Store Management System (GSMS) is a web-based application designed to manage products, orders, and inventory for a grocery store. It provides a user-friendly interface for store owners to add products, create orders, and track sales.
 
-Features
-1. Product Management
-Add new products with name, unit of measure, and price
+# GS Management System
 
-View all existing products in a table format
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Delete products from the system
+A web-based management system built with PHP, JavaScript, and MySQL for managing game servers or similar services.
 
-2. Order Management
-Create new orders with customer details
+## Features
 
-Add multiple products to an order with quantities
+- User authentication system (login/logout)
+- Dashboard interface
+- Server management capabilities
+- Responsive web design
+- MySQL database integration
+- Session management
+- Multi-language support (English/Spanish)
 
-Automatic calculation of order totals
+## Technologies Used
 
-View all past orders with details
+- **Frontend**: HTML5, CSS3, JavaScript, jQuery
+- **Backend**: PHP
+- **Database**: MySQL
+- **Server**: Apache
+- **Dependencies**: 
+  - Bootstrap (v5.1.3)
+  - jQuery (v3.6.0)
+  - Font Awesome (v5.15.4)
 
-3. Dashboard
-Overview of recent orders
+## Installation
 
-Quick access to product management and order creation
+### Prerequisites
 
-Technical Stack
-Frontend
-HTML5, CSS3, JavaScript
+- Web server (Apache recommended)
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
+- Composer (for dependency management)
 
-Bootstrap for responsive design
+### Setup Instructions
 
-jQuery for DOM manipulation and AJAX calls
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yvhiku/GS-Managment-System.git
+   cd GS-Managment-System
+   ```
 
-Material Design icons for UI elements
+2. Set up the database:
+   - Create a MySQL database
+   - Import the SQL file from `/database/gs_management.sql`
 
-Backend
-Python Flask framework
+3. Configure the application:
+   ```bash
+   cp config.example.php config.php
+   ```
+   Edit `config.php` with your database credentials:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'your_username');
+   define('DB_PASS', 'your_password');
+   define('DB_NAME', 'your_database');
+   ```
 
-MySQL database
+4. Set up the web server:
+   - Point your web server to the `public` directory
+   - Ensure `mod_rewrite` is enabled for clean URLs
 
-RESTful API endpoints
+5. Access the application:
+   - Open your browser to `http://localhost` (or your configured domain)
+   - Default admin credentials (change after first login):
+     - Username: `admin`
+     - Password: `admin123`
 
-Database Schema
-The system uses a relational database with the following tables:
+## Directory Structure
 
-products: Stores product information
+```
+├── assets/              # Static assets (CSS, JS, images)
+├── config/              # Configuration files
+├── database/            # Database schema and migrations
+├── includes/            # PHP includes and utilities
+├── languages/           # Translation files
+├── libs/                # External libraries
+├── pages/               # Application pages
+├── public/              # Web server root
+├── templates/           # HTML templates
+├── uploads/             # File upload directory
+├── .htaccess            # Apache configuration
+├── config.example.php   # Example configuration
+├── LICENSE              # MIT License
+└── README.md            # This file
+```
 
-uom: Stores units of measurement
+## Usage
 
-orders: Stores order headers
+1. **Login**: Access the system using your credentials
+2. **Dashboard**: View system overview after login
+3. **Server Management**: Add, edit, or remove servers
+4. **User Management**: Manage user accounts (admin only)
+5. **Settings**: Configure system preferences
 
-order_details: Stores line items for each order
+## Screenshots
 
-Installation Guide
-Prerequisites
-Python 3.x
+(Add actual screenshots from the system here)
+- Login page
+- Dashboard view
+- Server management interface
 
-MySQL Server
+## API Endpoints
 
-pip package manager
+The system provides these API endpoints:
 
-Setup Steps
-Clone the repository
+- `/api/login` - User authentication
+- `/api/servers` - Server management
+- `/api/users` - User management (admin only)
 
-Install required Python packages:
+## Contributing
 
-pip install flask mysql-connector-python
-Set up MySQL database:
+Contributions are welcome! Please follow these steps:
 
-Create a database named 'gs'
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature-branch`)
+5. Create a new Pull Request
 
-Import the SQL schema (not provided in current files)
+## License
 
-Configure database connection in sql_connection.py:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-python
-__cnx = mysql.connector.connect(user='your_username', password='your_password', database='gs')
-Start the Flask server:
+## Support
 
-python server.py
-Open the application in a web browser by navigating to the HTML files
+For support or questions, please open an issue on GitHub.
 
-File Structure
-├── index.html                # Main dashboard page
-├── manage-product.html       # Product management interface
-├── order.html                # Order creation interface
-├── server.py                 # Flask backend server
-├── sql_connection.py         # Database connection handler
-├── products_dao.py           # Data access for products
-├── orders_dao.py             # Data access for orders
-├── uom_dao.py                # Data access for units of measurement
-├── css/                      # Stylesheets
-│   ├── bootstrap.min.css
-│   ├── style.css
-│   ├── sidebar-menu.css
-│   ├── custom.css
-└── js/                       # JavaScript files
-    ├── packages/
-    │   └── jquery.min.js
-    └── custom/
-        ├── common.js
-        ├── dashboard.js
-        ├── manage-product.js
-        └── order.js
-API Endpoints
-Products
-GET /getProducts - Get all products
-
-POST /insertProduct - Add a new product
-
-POST /deleteProduct - Delete a product
-
-Orders
-GET /getAllOrders - Get all orders
-
-POST /insertOrder - Create a new order
-
-Units of Measurement
-GET /getUOM - Get all units of measurement
-
-Usage Instructions
-Dashboard (index.html)
-
-View recent orders
-
-Navigate to product management or create new orders
-
-Manage Products (manage-product.html)
-
-Click "Add New Product" to open the product form
-
-Fill in product details and click "Save"
-
-Products appear in the table below
-
-Use the delete button to remove products
-
-Create Order (order.html)
-
-Enter customer name
-
-Add products to the order by selecting from the dropdown
-
-Adjust quantities as needed
-
-The system automatically calculates totals
-
-Click "Save" to complete the order
-
-Future Enhancements
-User authentication and authorization
-
-Inventory management with stock levels
-
-Reporting and analytics dashboard
-
-Customer management system
-
-Barcode scanning integration
-
-Troubleshooting
-If the application fails to connect to the database, verify credentials in sql_connection.py
-
-Ensure all required Python packages are installed
-
-Check browser console for JavaScript errors if the UI isn't working properly
-
-Verify the Flask server is running on port 5000
-
-License
-This project is open-source and available for modification and distribution under the MIT License.
